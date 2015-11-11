@@ -13,13 +13,13 @@ import java.util.Random;
  */
 public class Matriz {
 
-    public int matriz[][]; //matriz cuadrada
+    public int[]vector; //matriz cuadrada
     public int tamano;
     private long suma;
     private final static Random generator = new Random();
 
     public Matriz(int tamano) {
-        this.matriz = new int[tamano][tamano];
+        this.vector = new int[tamano];
         this.tamano = tamano;
         this.suma = 0;
     }
@@ -27,9 +27,8 @@ public class Matriz {
     //genera numeros aleatorios entre 0 y 20 y los almacena en las posiciones d la matriz
     public void llenarMatriz() {
         for (int i = 0; i < tamano; i++) {
-            for (int j = 0; j < tamano; j++) {
-                matriz[i][j] = generator.nextInt(20);
-            }
+            
+                vector[i] = generator.nextInt(5);
         }
     }
 

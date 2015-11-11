@@ -13,25 +13,24 @@ public class SumaHilos implements Runnable {
 
     int tamano;
     int inicio, fin; //inicio y fin para los threads
-    Matriz matriz;
+    Matriz vector;
     long sum;
 
-    public SumaHilos(int tamano, int inicio, int fin, Matriz matriz) {
+    public SumaHilos(int tamano, int inicio, int fin, Matriz vector) {
         this.tamano = tamano;
         this.inicio = inicio;
         this.fin = fin;
         this.sum = 0;
-        this.matriz = matriz;
+        this.vector = this.vector;
     }
 
     //Tarea que ejecutaran los threads
     public void run() {
         for (int i = inicio; i < fin; i++) {
-            for (int j = 0; j < tamano; j++) {
-                sum = sum + matriz.matriz[i][j];
-            }
+          
+                sum = sum + vector.vector[i];
         }
-        matriz.sumaMatriz(sum); //se envia la suma al metodo sincronizado
+        vector.sumaMatriz(sum); //se envia la suma al metodo sincronizado
     }
 
 }
