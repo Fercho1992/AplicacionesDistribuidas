@@ -23,34 +23,41 @@ public class Suma {
     public static void main(String[] args) throws InterruptedException {
         int tamano = 6000;
         long sumaMatriz = 0;
+        int contador = 0;
         Matriz matriz = new Matriz(tamano);
         matriz.llenarMatriz(); //llamamos al metodo que llenara la matriz
         long tinicio = System.currentTimeMillis(); //Tiempo inicio
 
         try {
             // Abrimos el archivo
-            FileInputStream fstream = new FileInputStream("suma.txt");
+            FileInputStream entradaTexto = new FileInputStream("suma.txt");
             // Creamos el objeto de entrada
-            DataInputStream entrada = new DataInputStream(fstream);
+            //DataInputStream entrada = new DataInputStream(fstream);
             // Creamos el Buffer de Lectura
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
+            BufferedReader texto = new BufferedReader(new InputStreamReader(entradaTexto));
             String strLinea;
+            //Contador
+
             // Leer el archivo linea por linea
-            while ((strLinea = buffer.readLine()) != null) {
+            while ((strLinea = texto.readLine()) != null) {
                 // Imprimimos la línea por pantalla
-                System.out.println(strLinea);
+                contador++;
             }
+            //
+            //System.out.println(entradaTexto.toString());
+            //
+            System.out.println(contador);
             // Cerramos el archivo
-            entrada.close();
+            entradaTexto.close();
         } catch (Exception e) { //Catch de excepciones
             System.err.println("Ocurrio un error: " + e.getMessage());
         }
 
         //Realiza la suma normal de los valores de la matriz
-        for (int i = 0; i < tamano; i++) {
-            for (int j = 0; j < tamano; j++) {
-                sumaMatriz = sumaMatriz + matriz.matriz[i][j];
-            }
+        for (int i = 0; i < contador; i++) {
+            
+                sumaMatriz = sumaMatriz + matriz.vector[i];
+            
         }
         long tfinal = System.currentTimeMillis();//tiempo fin
 
@@ -81,7 +88,7 @@ public class Suma {
 
         if (tasksEnded) {
             long tifinal = System.currentTimeMillis();
-            System.out.println("La suma Con Threads es: " + matriz.getSuma() + "  tiempo: " + (tifinal - tiinicio));
+            System.out.println("La suma con Hilos es: " + matriz.getSuma() + "  tiempo: " + (tifinal - tiinicio));
         }
     }
 
